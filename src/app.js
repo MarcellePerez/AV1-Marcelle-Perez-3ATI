@@ -16,6 +16,6 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
+app.use("/", userRoutes);
 
 export default app;

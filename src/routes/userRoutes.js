@@ -4,6 +4,6 @@ import { getProfile } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.get("/profile", authMiddleware, getProfile);
+router.get("/perfil", authMiddleware, getProfile);
 
 export default router;

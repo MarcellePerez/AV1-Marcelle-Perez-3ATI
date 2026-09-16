@@ -11,7 +11,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   
-   function handleRegister(event) {
+  function handleRegister(event) {
   event.preventDefault();
 
   setError("");
@@ -41,11 +41,13 @@ export default function Register() {
     .catch((error) => {
       console.error("Erro no cadastro:", error);
 
-      if (error.response?.data?.message) {
-        setError(error.response.data.message);
-      } else {
-        setError("Não foi possível realizar o cadastro.");
-      }
+   if (error.response?.data?.message) {
+  setError(error.response.data.message);
+} else if (error.response?.data?.mensagem) {
+  setError(error.response.data.mensagem);
+} else {
+  setError("Não foi possível realizar o cadastro.");
+}
     })
     .finally(() => {
       setLoading(false);

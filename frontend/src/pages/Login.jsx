@@ -45,7 +45,7 @@ export default function Login() {
       saveToken(token);
 
       // Vai para a página protegida
-      navigate("/protegida");
+      navigate("/perfil");
 
     } catch (error) {
       console.error("Erro no login:", error);

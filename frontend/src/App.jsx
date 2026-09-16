@@ -13,7 +13,7 @@ export default function App() {
 
       {/* /protegida deve exigir token. ProtectedRoute bloqueará a navegação sem ele. */}
       <Route
-        path="/protegida"
+        path="/perfil"
         element={
           <ProtectedRoute>
             <ProtectedPage />

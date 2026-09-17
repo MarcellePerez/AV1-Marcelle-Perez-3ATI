@@ -54,62 +54,109 @@ export default function ProtectedPage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-8">
-      <section className="w-full max-w-lg rounded-xl bg-white p-6 shadow-md sm:p-8">
+  <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 px-4 py-8">
 
-        <h1 className="mb-4 text-center text-2xl font-bold text-gray-900">
+    <section className="w-full max-w-lg rounded-2xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
+
+      {/* Cabeçalho */}
+      <div className="mb-8 text-center">
+
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-950 shadow-lg shadow-red-950/40">
+          <span className="text-2xl text-white">✦</span>
+        </div>
+
+        <h1 className="text-3xl font-bold text-white">
           Área Protegida
         </h1>
 
-        <p
-          role="status"
-          className="mb-5 rounded-md bg-green-50 p-3 text-center text-green-700"
-        >
-          Login realizado com sucesso
+        <p className="mt-2 text-sm text-gray-300">
+          Você está conectado com segurança
         </p>
 
-        {loading && (
-          <p role="status" className="mb-4 text-gray-600">
-            Carregando perfil...
-          </p>
-        )}
+      </div>
 
-        {error && (
-          <p role="alert" className="mb-4 text-red-600">
-            {error}
-          </p>
-        )}
+      {/* Mensagem de sucesso */}
+      <div
+        role="status"
+        className="mb-5 rounded-xl border border-green-500/20 bg-green-950/40 p-3 text-center text-sm text-green-300"
+      >
+        Login realizado com sucesso
+      </div>
 
-        <div className="mb-6 space-y-2 rounded-md border border-gray-200 p-4 text-gray-700">
-          <h2 className="font-semibold text-gray-900">
-            Dados do usuário
-          </h2>
+      {/* Dados do usuário */}
+      <div className="mb-6 rounded-xl border border-white/10 bg-black/20 p-5">
 
-          <p>
-            <strong>ID:</strong>{" "}
-            {user?.id ?? "Aguardando perfil"}
-          </p>
+        <h2 className="mb-4 text-lg font-semibold text-white">
+          Dados do usuário
+        </h2>
 
-          <p>
-            <strong>Nome:</strong>{" "}
-            {user?.name ?? "Aguardando perfil"}
-          </p>
+        <div className="space-y-4">
 
-          <p>
-            <strong>Email:</strong>{" "}
-            {user?.email ?? "Aguardando perfil"}
-          </p>
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+              ID
+            </p>
+
+            <p className="mt-1 text-white">
+              {user?.id ?? "Aguardando perfil"}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+              Nome
+            </p>
+
+            <p className="mt-1 text-white">
+              {user?.name ?? "Aguardando perfil"}
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+              Email
+            </p>
+
+            <p className="mt-1 break-all text-white">
+              {user?.email ?? "Aguardando perfil"}
+            </p>
+          </div>
+
         </div>
 
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="w-full rounded-md bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
-        >
-          Sair
-        </button>
+      </div>
 
-      </section>
-    </main>
-  );
+      {/* Loading */}
+      {loading && (
+        <p
+          role="status"
+          className="mb-4 text-center text-sm text-gray-300"
+        >
+          Carregando perfil...
+        </p>
+      )}
+
+      {/* Erro */}
+      {error && (
+        <p
+          role="alert"
+          className="mb-4 rounded-xl border border-red-500/20 bg-red-950/40 p-3 text-center text-sm text-red-200"
+        >
+          {error}
+        </p>
+      )}
+
+      {/* Botão sair */}
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="w-full rounded-xl bg-red-950 px-4 py-3 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:bg-red-900 hover:shadow-red-900/40"
+      >
+        Sair
+      </button>
+
+    </section>
+
+  </main>
+);  
 }
